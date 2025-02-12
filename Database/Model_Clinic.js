@@ -7,7 +7,7 @@ const Model_PetOwner = mongoose.Schema({
     PhoneNumber: Number
 });
 
-const PetOwner = mongoose.model('PetOwner', Model_PetOwner);
+const PetOwner = mongoose.model('petowners', Model_PetOwner);
 
 const Model_Cat = mongoose.Schema({
     ID_Cat: String,
@@ -18,7 +18,7 @@ const Model_Cat = mongoose.Schema({
     ID_Pet_Owner: String
 });
 
-const Cat = mongoose.model('Cat', Model_Cat);
+const Cat = mongoose.model('cats', Model_Cat);
 
 const Model_Treatment = mongoose.Schema({
     ID_Treatment: String,
@@ -29,7 +29,7 @@ const Model_Treatment = mongoose.Schema({
     Payment: Number
 });
 
-const Treatment = mongoose.model('Treatment', Model_Treatment);
+const Treatment = mongoose.model('treatments', Model_Treatment);
 
 const Model_Payment = mongoose.Schema({
     ID_Payment: String,
@@ -40,6 +40,6 @@ const Model_Payment = mongoose.Schema({
     Payment: Number
 });
 
-const Payment = mongoose.model('Payment', Model_Payment);
+const Payment = mongoose.model('payments', Model_Payment);
 
 module.exports = { PetOwner, Cat, Treatment, Payment};

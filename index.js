@@ -7,7 +7,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'));
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://s6406021610046:h61oP17zkVTIpBsb@cluster0.4vjel.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+mongoose.connect('mongodb+srv://s6406021610046:h61oP17zkVTIpBsb@cluster0.4vjel.mongodb.net/Clinic?retryWrites=true&w=majority&appName=Cluster0').then(() => {
     console.log("Connected to MongoDB");
 }).catch(() => {
     console.log("Error connecting to MongoDB:", error);
