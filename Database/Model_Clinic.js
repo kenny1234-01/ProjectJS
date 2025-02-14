@@ -4,7 +4,7 @@ const Model_PetOwner = mongoose.Schema({
     ID_Pet_Owner: String,
     NamePet_Owner: String,
     LastNamePet_Owner: String,
-    PhoneNumber: Number
+    PhoneNumber: String
 });
 
 const PetOwner = mongoose.model('petowners', Model_PetOwner);
