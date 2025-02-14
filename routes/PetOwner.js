@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
     }
     const petOwner = new PetOwner({ID_Pet_Owner: newId, ...add_PetOwner});
     await petOwner.save();
-    res.json(petOwner)
+    res.json(petOwner);
 });
 
 module.exports = router;

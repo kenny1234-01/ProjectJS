@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     const add_cats = req.body;
     const cats = new Cat(add_cats);
     await cats.save();
-    res.json(cats)
+    res.json(cats);
 });
 
 module.exports = router;
