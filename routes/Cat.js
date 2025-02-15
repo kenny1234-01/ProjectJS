@@ -18,4 +18,17 @@ router.post('/:id', async (req, res) => {
     res.json(cats);
 });
 
+router.put('/:id', async (req, res) => {
+    const catId = req.params.id
+    const UpdateCat = req.body;
+    const Catupdate = await PetOwner.findOneAndUpdate({ ID_Pet_Owner: catId }, UpdateCat, { new: true });
+    res.json(Catupdate);
+});
+
+router.delete('/:id', async (req, res) => {
+    const catId = req.params.id
+    await Cat.deleteOne({ ID_Pet_Owner: catId });
+    res.json({});
+});
+
 module.exports = router;
