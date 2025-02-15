@@ -7,9 +7,13 @@ router.get('/', async (req, res) => {
     res.json(cats);
 });
 
-router.post('/', async (req, res) => {
-    const add_cats = req.body;
-    const cats = new Cat(add_cats);
+router.post('/:id', async (req, res) => {
+    const latestPetOwner = req.params.id;
+    const add_cats = { ...req.body, ID_Pet_Owner: latestPetOwner };
+
+    let newIdcat = latestPetOwner.replace("PO", "CS");
+
+    const cats = new Cat({ID_Cat: newIdcat, ...add_cats});
     await cats.save();
     res.json(cats);
 });

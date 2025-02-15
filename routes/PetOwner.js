@@ -20,4 +20,18 @@ router.post('/', async (req, res) => {
     res.json(petOwner);
 });
 
+router.put('/:id', async (req, res) => {
+    const petOwnerId = req.params.id
+    const UpdateOwner = req.body;
+    const updatedOwner = await PetOwner.findOneAndUpdate({ ID_Pet_Owner: petOwnerId }, UpdateOwner, { new: true });
+    res.json(updatedOwner);
+});
+
+router.delete('/:id', async (req, res) => {
+    const petOwnerId = req.params.id
+    await PetOwner.deleteOne({ ID_Pet_Owner: petOwnerId });
+    await Cat.deleteOne({ ID_Pet_Owner: petOwnerId });
+    res.json({});
+});
+
 module.exports = router;
