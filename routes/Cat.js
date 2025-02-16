@@ -11,7 +11,12 @@ router.post('/:id', async (req, res) => {
     const latestPetOwner = req.params.id;
     const add_cats = { ...req.body, ID_Pet_Owner: latestPetOwner };
 
-    let newIdcat = latestPetOwner.replace("PO", "CS");
+    const lastCat = await Cat.findOne().sort({ID_Cat: -1});
+    let newIdcat = "CS001";
+    if (lastCat) {
+        const lastIdNum = parseInt(lastCat.ID_Cat.replace("CS", ""), 10);
+        newIdcat = `CS${String(lastIdNum + 1).padStart(3, "0")}`;
+    }
 
     const cats = new Cat({ID_Cat: newIdcat, ...add_cats});
     await cats.save();
@@ -19,14 +24,14 @@ router.post('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    const catId = req.params.id
+    const catId = req.params.id;
     const UpdateCat = req.body;
     const Catupdate = await PetOwner.findOneAndUpdate({ ID_Pet_Owner: catId }, UpdateCat, { new: true });
     res.json(Catupdate);
 });
 
 router.delete('/:id', async (req, res) => {
-    const catId = req.params.id
+    const catId = req.params.id;
     await Cat.deleteOne({ ID_Pet_Owner: catId });
     res.json({});
 });

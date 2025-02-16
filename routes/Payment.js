@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     res.render('Payment', {payments});
 });
 
-router.post('/', async (req, res) => {
+router.post('/:id', async (req, res) => {
     const add_payment = req.body;
     const payments = new Payment(add_payment);
     await payments.save();

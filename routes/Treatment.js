@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const add_treatment = req.body;
+    const latestcat = req.params.id;
+    const add_treatment = { ...req.body, ID_Cat: latestcat };
     const treatments = new Treatment(add_treatment);
     await treatments.save();
     res.json(treatments)
