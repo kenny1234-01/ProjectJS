@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Case</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f7b2b7, #99c8c0);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.navbar {
+    margin-top: 10px;
+}
+
+.navbar button {
+    background: #f5c6cb;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.form-container {
+    background: #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 20px;
+    width: 50%;
+}
+
+.form-group {
+    margin: 10px 0;
+    text-align: left;
+    padding-right: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #87d3c2;
+}
+
+.next-button {
+    background: #50bfa5;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+}
+</style>
+<body>
+    <div class="container">
+        <h1>New case</h1>
+        <div class="navbar">
+            <button>New Case</button>
+            <button>ID Owner</button>
+            <button>Treatment</button>
+            <button>Payment</button>
+        </div>
+
+        <div class="form-container">
+            <form action="/submit-case" method="POST">
+                <div class="form-group">
+                    <label>Cat name</label>
+                    <input type="text" name="catName" required>
+                </div>
+                <div class="form-group">
+                    <label>Species</label>
+                    <input type="text" name="species" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <input type="text" name="gender" required>
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label>Symptoms</label>
+                    <input type="text" name="symptoms" required>
+                </div>
+                <button type="submit" class="next-button">Next</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

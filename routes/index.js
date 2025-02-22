@@ -7,4 +7,13 @@ router.get('/', async (req, res) => {
     res.render('index', {petOwner});
 });
 
+router.get('/app', async (req, res) => {
+    const petOwner = await PetOwner.find();
+    res.render('appClinic', {petOwner});
+});
+
+router.get('/PostOwnerCat', async (req, res) => {
+    res.render('formOnerCat');
+});
+
 module.exports = router;

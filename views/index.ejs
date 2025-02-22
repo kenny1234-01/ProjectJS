@@ -3,15 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>The Cat Clinic</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f7b2b7, #99c8c0);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    position: relative;
+}
+
+.title {
+    font-size: 4em;
+    font-weight: bold;
+    color: green;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.cat-image {
+    width: 150px;
+    margin: 20px 0;
+}
+
+.welcome-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #f8d7da;
+    color: #50bfa5;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+</style>
 <body>
-    <h1>Hello World</h1>
-    <a href="/">Home</a>
-    <a href="/cat">cat</a>
-    <a href="/PetOwner">PetOwner</a>
-    <a href="/Treatment">Treatment</a>
-    <a href="/Payment">Payment</a>
+    <div class="container">
+        <h1 class="title">The Cat Clinic</h1>
+        <img src="/images/cat-doctor.png" alt="Cat Doctor" class="cat-image">
+        <a href="/app" class="welcome-button">welcome</a>
+    </div>
 </body>
 </html>

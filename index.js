@@ -27,4 +27,4 @@ app.use('/Payment', PaymentPage);
 
 app.listen(PORT, () => {
     console.log(`App Running to http://localhost:${PORT}`);
-})
+});

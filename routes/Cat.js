@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
 router.post('/:id', async (req, res) => {
     const latestPetOwner = req.params.id;
     const add_cats = { ...req.body, ID_Pet_Owner: latestPetOwner };
-
     const lastCat = await Cat.findOne().sort({ID_Cat: -1});
     let newIdcat = "CS001";
     if (lastCat) {
@@ -26,13 +25,13 @@ router.post('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const catId = req.params.id;
     const UpdateCat = req.body;
-    const Catupdate = await PetOwner.findOneAndUpdate({ ID_Pet_Owner: catId }, UpdateCat, { new: true });
+    const Catupdate = await PetOwner.findOneAndUpdate({ ID_Cat: catId }, UpdateCat, { new: true });
     res.json(Catupdate);
 });
 
 router.delete('/:id', async (req, res) => {
     const catId = req.params.id;
-    await Cat.deleteOne({ ID_Pet_Owner: catId });
+    await Cat.deleteOne({ ID_Cat: catId });
     res.json({});
 });
 

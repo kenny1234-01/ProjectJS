@@ -7,12 +7,27 @@ router.get('/', async (req, res) => {
     res.render('Treatment', {treatments});
 });
 
-router.post('/', async (req, res) => {
+router.post('/:id', async (req, res) => {
     const latestcat = req.params.id;
     const add_treatment = { ...req.body, ID_Cat: latestcat };
-    const treatments = new Treatment(add_treatment);
+    const ID_Treatment = latestcat.replace("CS", "T");
+    const date = new Date();
+    const treatments = new Treatment({ID_Treatment: ID_Treatment, ...add_treatment, Treatment_Date: date});
     await treatments.save();
     res.json(treatments)
+});
+
+router.put('/:id', async (req, res) => {
+    const ID_Treatment = req.params.id;
+    const UpdateTreatment = req.body;
+    const updatedTreatment = await Treatment.findOneAndUpdate({ ID_Treatment: ID_Treatment }, UpdateTreatment, { new: true });
+    res.json(updatedTreatment);
+});
+
+router.delete('/:id', async (req, res) => {
+    const ID_Treatment = req.params.id;
+    await Treatment.deleteOne({ ID_Treatment: ID_Treatment });
+    res.json({});
 });
 
 module.exports = router;
