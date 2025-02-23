@@ -33,7 +33,6 @@ const Treatment = mongoose.model('treatments', Model_Treatment);
 
 const Model_Payment = mongoose.Schema({
     ID_Payment: String,
-    ID_Pet_Owner: String,
     ID_Cat: String,
     Payment_Date: String,
     Medicine_fake_away: String,

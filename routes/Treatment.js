@@ -12,7 +12,12 @@ router.post('/:id', async (req, res) => {
     const add_treatment = { ...req.body, ID_Cat: latestcat };
     const ID_Treatment = latestcat.replace("CS", "T");
     const date = new Date();
-    const treatments = new Treatment({ID_Treatment: ID_Treatment, ...add_treatment, Treatment_Date: date});
+    const formattedDate = date.toLocaleDateString('th-TH', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+    });
+    const treatments = new Treatment({ID_Treatment: ID_Treatment, ...add_treatment, Treatment_Date: formattedDate});
     await treatments.save();
     res.json(treatments)
 });

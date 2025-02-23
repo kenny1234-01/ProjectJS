@@ -8,7 +8,7 @@
 </head>
 
 <style>
-    body {
+body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #f7b2b7, #99c8c0);
     text-align: center;
@@ -29,7 +29,7 @@ h1 {
     margin-top: 10px;
 }
 
-.navbar button {
+.navbar a {
     background: #f5c6cb;
     border: none;
     padding: 10px 15px;
@@ -37,6 +37,7 @@ h1 {
     cursor: pointer;
     font-weight: bold;
     border-radius: 10px;
+    text-decoration: none;
 }
 
 .form-container {
@@ -79,16 +80,17 @@ h1 {
 </style>
 <body>
     <div class="container">
-        <h1>New case</h1>
+        <h1>New Cat</h1>
         <div class="navbar">
-            <button>New Case</button>
-            <button>ID Owner</button>
-            <button>Treatment</button>
-            <button>Payment</button>
+            <a href="/app">New Case</a>
+            <a href="/cat">Cat</a>
+            <a href="/PetOwner">ID Owner</a>
+            <a href="/Treatment">Treatment</a>
+            <a href="/Payment">Payment</a>
         </div>
 
         <div class="form-container">
-            <form action="/submit-case" method="POST">
+            <form action="/cat/" method="POST">
                 <div class="form-group">
                     <label>Cat name</label>
                     <input type="text" name="catName" required>
@@ -109,7 +111,7 @@ h1 {
                     <label>Symptoms</label>
                     <input type="text" name="symptoms" required>
                 </div>
-                <button type="submit" class="next-button">Next</button>
+                <button type="submit" class="next-button">Submit</button>
             </form>
         </div>
     </div>

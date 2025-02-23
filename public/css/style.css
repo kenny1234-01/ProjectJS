@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f7b2b7, #99c8c0);
+    margin: 0;
+    padding: 0;
+}
+
+.titlebar{
+    font-weight: bolder;
+    color: blue;
+} 
