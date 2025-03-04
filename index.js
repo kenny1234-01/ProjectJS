@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const PORT = 5000;
 
 app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(express.json());
 
@@ -18,12 +19,14 @@ const CatPage = require('./routes/Cat');
 const PetOwnerPage = require('./routes/PetOwner');
 const TreatmentPage = require('./routes/Treatment');
 const PaymentPage = require('./routes/Payment');
+const EditAll = require('./routes/AllEditData')
 
 app.use('/', indexPage);
 app.use('/cat', CatPage);
 app.use('/PetOwner', PetOwnerPage);
 app.use('/Treatment', TreatmentPage);
 app.use('/Payment', PaymentPage);
+app.use('/EditAll', EditAll);
 
 app.listen(PORT, () => {
     console.log(`App Running to http://localhost:${PORT}`);

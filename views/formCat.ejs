@@ -90,30 +90,28 @@ h1 {
         </div>
 
         <div class="form-container">
-            <form action="/cat/" method="POST">
+            <form action="/cat/<%= petOwner.ID_Pet_Owner %>" method="POST">
+                <h1><%= petOwner.ID_Pet_Owner %></h1>
                 <div class="form-group">
-                    <label>Cat name</label>
-                    <input type="text" name="catName" required>
+                    <label>ชื่อแมว</label>
+                    <input type="text" name="Cat_Name" required>
                 </div>
                 <div class="form-group">
-                    <label>Species</label>
-                    <input type="text" name="species" required>
+                    <label>สายพันธ์ุ</label>
+                    <input type="text" name="Cat_Species" required>
                 </div>
                 <div class="form-group">
-                    <label>Gender</label>
-                    <input type="text" name="gender" required>
+                    <label>เพศ</label>
+                    <input type="text" name="Cat_Gender" required>
                 </div>
                 <div class="form-group">
                     <label>Age</label>
-                    <input type="number" name="age" required>
-                </div>
-                <div class="form-group">
-                    <label>Symptoms</label>
-                    <input type="text" name="symptoms" required>
+                    <input type="text" name="Cat_Age" required>
                 </div>
                 <button type="submit" class="next-button">Submit</button>
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

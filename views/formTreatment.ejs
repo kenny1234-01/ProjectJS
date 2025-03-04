@@ -80,7 +80,7 @@ h1 {
 </style>
 <body>
     <div class="container">
-        <h1>New Owner</h1>
+        <h1>New Cat</h1>
         <div class="navbar">
             <a href="/app">New Case</a>
             <a href="/cat">Cat</a>
@@ -90,24 +90,24 @@ h1 {
         </div>
 
         <div class="form-container">
-            <form action="/PetOwner" method="POST">
+            <form action="/Treatment/<%= cat.ID_Cat %>" method="POST">
+                <h1><%= cat.ID_Cat %></h1>
                 <div class="form-group">
-                    <label>ชื่อเจ้าของแมว</label>
-                    <input type="text" name="NamePet_Owner" required>
+                    <label>อาการป่วย</label>
+                    <input type="text" name="Cat_symptoms" required>
                 </div>
                 <div class="form-group">
-                    <label>นามสกุลเจ้าของแมว</label>
-                    <input type="text" name="LastNamePet_Owner" required>
+                    <label>สถานะ</label>
+                    <input type="text" name="Cat_status" required>
                 </div>
                 <div class="form-group">
-                    <label>เบอร์โทรศัพท์</label>
-                    <input type="text" name="PhoneNumber" required>
+                    <label>ค่ารักษา</label>
+                    <input type="number" name="Payment" required>
                 </div>
-                <button type="submit" class="next-button">Next</button>
+                <button type="submit" class="next-button">Submit</button>
             </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
 </html>

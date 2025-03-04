@@ -45,10 +45,23 @@ router.get('/app', async (req, res) => {
             PhoneNumber: { $first: "$PhoneNumber" },
             cats: { $push: "$cats" }
           }
+        },
+        {
+            $sort: { _id: -1 } // เรียงจากใหม่สุดไปเก่าสุด
         }
     ]);
-    owners.reverse();
-    res.render('appClinic', {owners});
+
+    const totalPayment = await Payment.aggregate([
+        {
+          $group: {
+            _id: null, // ไม่ต้องการจัดกลุ่ม ให้รวมทั้งหมด
+            total: { $sum: "$Payment" } // รวมค่าทั้งหมดของฟิลด์ Payment
+          }
+        }
+    ]);
+      
+    const payment = totalPayment[0]?.total || 0; // ถ้าไม่มีข้อมูลให้แสดง 0
+    res.render('appClinic', {owners, payment});
 });
 
 router.get('/PostOwnerCat', async (req, res) => {

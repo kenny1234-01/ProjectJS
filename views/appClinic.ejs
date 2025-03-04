@@ -9,33 +9,18 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg border-bottom border-5 border-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand fs-1 fw-bold ms-5" href="/app" style="font-family: 'Comic Sans MS', cursive;">Cat Clinic</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse mt-2 fw-bold" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 fs-4">
-              <li class="nav-item me-3">
-                <a class="nav-link btn btn-outline-light" aria-current="page" href="/PostOwnerCat">New Case</a>
-              </li>
-              <li class="nav-item me-3">
-                <a class="nav-link btn btn-outline-light" href="/PetOwner">ID Owner</a>
-              </li>
-              <li class="nav-item me-3">
-                <a class="nav-link btn btn-outline-light" href="/Treatment">Treatment</a>
-              </li>
-              <li class="nav-item me-3">
-                <a class="nav-link btn btn-outline-light" href="/Payment">Payment</a>
-              </li>
-            </ul>
-          </div>
+    <%- include('navbar/nav') %>
+    <div class="container p-0">
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-outline-dark mb-1 mt-4 fs-5" aria-current="page" href="/PostOwnerCat">+ New Case</a>
         </div>
-    </nav>
-    <div class="container mt-3 bg-light rounded-3">
+      </div>
+    </div>
+    <div class="container mt-3 bg-light rounded-3 border border-1 border-dark">
         <div class="row">
-            <table class="table mt-1 mb-1 table-borderless">
+            <h3 class="mt-3">รายการเคสการรักษา</h3>
+            <table class="table mt-1 mb-1 table-borderless border-top border-1 border-dark">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
@@ -80,8 +65,8 @@
                               <% if (catIndex === 0) { %> <!-- แสดงปุ่มแค่แถวแรกของแมวแต่ละตัว -->
                                 <td rowspan="<%= ownerRowspan %>">
                                     <div class="col">
-                                        <a href="http://" class="btn btn-outline-primary">แก้ไข</a>
-                                        <a href="http://" class="btn btn-outline-danger">ลบ</a>
+                                        <a href="/EditAll/<%= owner.ID_Pet_Owner %>" class="btn btn-outline-primary">แก้ไข</a>
+                                        <a href="/EditAll/deleteAllCase/<%= owner.ID_Pet_Owner %>" class="btn btn-outline-danger">ลบ</a>
                                     </div>
                                 </td>
                               <% } %>
@@ -97,7 +82,7 @@
                     <td scope="col"></td>
                     <td scope="col"></td>
                     <th scope="col">รวม</th>
-                    <th scope="col">฿ 2000</th>
+                    <th scope="col">฿ <%= payment %></th>
                     <td scope="col"></td>
                   </tr>
                 </tbody>

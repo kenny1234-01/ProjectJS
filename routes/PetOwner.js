@@ -3,8 +3,8 @@ const router = express.Router();
 const { PetOwner, Cat, Treatment, Payment} = require('../Database/Model_Clinic');
 
 router.get('/', async (req, res) => {
-    const petOwner = await PetOwner.find();
-    res.json(petOwner);
+    const petOwner = await PetOwner.find().sort({ _id: -1 });
+    res.render('PetOwner', {petOwner});
 });
 
 router.post('/', async (req, res) => {
@@ -17,11 +17,11 @@ router.post('/', async (req, res) => {
     }
     const petOwner = new PetOwner({ID_Pet_Owner: newId, ...add_PetOwner});
     await petOwner.save();
-    res.json(petOwner);
+    res.render('formCat', {petOwner});
 });
 
 router.put('/:id', async (req, res) => {
-    const petOwnerId = req.params.id
+    const petOwnerId = req.params.id;
     const UpdateOwner = req.body;
     const updatedOwner = await PetOwner.findOneAndUpdate({ ID_Pet_Owner: petOwnerId }, UpdateOwner, { new: true });
     res.json(updatedOwner);

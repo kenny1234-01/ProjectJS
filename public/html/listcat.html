@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat in Case</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #92c5c2, #f7a9a9);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        .buttons {
+            margin-bottom: 10px;
+        }
+        .buttons button {
+            background-color: #f8e8db;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 2px solid #ccc;
+        }
+        th {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: #5bc0de;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cat in Case</h1>
+        <div class="buttons">
+            <button>New Case</button>
+            <button>ID Owner</button>
+            <button>Treatment</button>
+            <button>Payment</button>
+        </div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>ID_Owner</th>
+            </tr>
+            <tr class="highlight">
+                <td>CS001</td>
+                <td>Shiro</td>
+                <td>Maine Coon</td>
+                <td>3y/0m/0d</td>
+                <td>Male</td>
+                <td>PO001</td>
+            </tr>
+            <tr><td colspan="6"> </td></tr>
+            <tr><td colspan="6"> </td></tr>
+            <tr><td colspan="6"> </td></tr>
+            <tr><td colspan="6"> </td></tr>
+        </table>
+    </div>
+</body>
+</html>
