@@ -19,38 +19,37 @@
     </div>
     <div class="container mt-3 bg-light rounded-3 border border-1 border-dark">
         <div class="row">
-            <h3 class="mt-3">รายการรักษา</h3>
+            <h3 class="mt-3">วันที่รักษา</h3>
             <table class="table mt-1 mb-1 table-borderless border-top border-1 border-dark">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">รหัสรายการรักษา</th>
-                    <th scope="col">รหัสแมว</th>
-                    <th scope="col">อาการป่วย</th>
-                    <th scope="col">สถานะ</th>
-                    <th scope="col">วันที่รักษา</th>
+                    <th scope="col">วันที่</th>
+                    <th scope="col">จํานวนแมวที่มารักษา</th>
                     <th scope="col">ค่ารักษา</th>
-                    <th scope="col">แก้ไข</th>
                   </tr>
                 </thead>
                 <tbody>
+                    <% let grandTotal = 0; %>
+                    <% let CatTotal = 0; %>
                     <% treatments.forEach((treatment, index) => { %>
                         <tr class="table-info">
                             <td><%= index + 1 %></td>
-                            <td><%= treatment.ID_Treatment %></td>
-                            <td><%= treatment.ID_Cat %></td>
-                            <td><%= treatment.Cat_symptoms %></td>
-                            <td><%= treatment.Cat_status %></td>
-                            <td><%= treatment.Treatment_Date %></td>
-                            <td>฿ <%= treatment.Payment %></td>
-                            <td>
-                                <div class="col">
-                                    <a href="/EditAll/EditTreatment/<%= treatment.ID_Treatment %>" class="btn btn-outline-primary">แก้ไข</a>
-                                    <a href="/EditAll/deleteTreatments/<%= treatment.ID_Treatment %>" class="btn btn-outline-danger">ลบ</a>
-                                </div>
-                            </td>
+                            <td><%= treatment._id %></td>
+                            <td><%= treatment.count %> ตัว</td>
+                            <td>฿ <%= treatment.totalPayment %></td>
                         </tr>
+                        <% grandTotal += treatment.totalPayment; %>
+                        <% CatTotal += treatment.count; %>
                     <% }) %>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td><strong>รวมทั้งหมด</strong></td>
+                        <td><strong><%= CatTotal %> ตัว</strong></td>
+                        <td><strong>฿ <%= grandTotal %></strong></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

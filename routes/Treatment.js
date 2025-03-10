@@ -45,4 +45,18 @@ router.delete('/:id', async (req, res) => {
     res.json({});
 });
 
+router.get('/DateTreatment', async (req, res) => {
+    const treatments = await Treatment.aggregate([
+        {
+            $group: {
+                _id: "$Treatment_Date", // จัดกลุ่มตามวันที่
+                count: { $sum: 1 }, // นับจำนวน ID_Cat
+                totalPayment: { $sum: "$Payment" } // รวมค่ารักษา
+            }
+        },
+        { $sort: { _id: -1 } } // เรียงลำดับจากวันที่ล่าสุดไปเก่าสุด
+    ]);
+    res.render('DateTreatment', {treatments});
+});
+
 module.exports = router;

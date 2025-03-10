@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>คลินิครักษาแมว</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -12,78 +12,88 @@
     <%- include('navbar/nav') %>
     <div class="container">
         <div class="row mt-3">
-            <div class="col"><h1>เจ้าของแมว</h1></div>
+            <div class="col"><h1 class="fw-bold">เจ้าของแมว</h1></div>
         </div>
         <div class="row mt-3">
             <% Owner.forEach((owner, index) => { %>
                 <div class="col-4">
-                    <div class="card">
+                    <div class="card bg-light bg-opacity-50">
                         <div class="card-body">
                              <h3 class="card-title"><%= owner.ID_Pet_Owner %></h3>
-                             <p class="card-text">ชื่อ-นามสกุล : <%= owner.NamePet_Owner %> <%= owner.LastNamePet_Owner %></p>
-                             <p class="card-text">เบอร์โทร : <%= owner.PhoneNumber %></p>
-                             <a href="/EditAll/AddCat/<%= owner.ID_Pet_Owner %>" class="btn btn-info">เพิ่มแมว</a>
-                             <a href="/EditAll/EditOwder/<%= owner.ID_Pet_Owner %>" class="btn btn-info">แก้ไขข้อมูลเจ้าของแมว</a>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">ชื่อ-นามสกุล : <%= owner.NamePet_Owner %> <%= owner.LastNamePet_Owner %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">เบอร์โทร : <%= owner.PhoneNumber %></p>
+                             <a href="/EditAll/AddCat/<%= owner.ID_Pet_Owner %>" class="btn btn-success">เพิ่มแมว</a>
+                             <a href="/EditAll/EditOwder/<%= owner.ID_Pet_Owner %>" class="btn btn-primary">แก้ไขข้อมูลเจ้าของแมว</a>
                         </div>
                     </div>
                 </div>
             <% }) %>
         </div>
         <div class="row mt-3">
-            <div class="col"><h1>รายการแมว</h1></div>
+            <div class="col"><h1 class="fw-bold">รายการแมว</h1></div>
         </div>
         <div class="row mt-3">
             <% Allcats.forEach((cats, index) => { %>
                 <div class="col-4">
-                    <div class="card">
+                    <div class="card bg-light bg-opacity-50">
                         <div class="card-body">
-                             <h3 class="card-title">#<%= index + 1 %> <%= cats.ID_Cat %></h3>
-                             <p class="card-text">ชื่อแมว : <%= cats.Cat_Name %></p>
-                             <p class="card-text">เพศ : <%= cats.Cat_Gender %></p>
-                             <p class="card-text">สายพันธ์ุ : <%= cats.Cat_Species %></p>
-                             <p class="card-text">อายุ : <%= cats.Cat_Age %></p>
-                             <a href="/EditAll/AddTreatment/<%= cats.ID_Cat %>" class="btn btn-info">เพิ่มเคสการรักษา</a>
-                             <a href="/EditAll/AddPayment/<%= cats.ID_Cat %>" class="btn btn-info">เพิ่มบิลค่ารักษา</a>
-                             <a href="/EditAll/EditCat/<%= cats.ID_Cat %>" class="btn btn-info">แก้ไขข้อมูลแมว</a>
+                            <div class="row">
+                                <div class="col-10"><h3 class="card-title">#<%= index + 1 %> <%= cats.ID_Cat %></h3></div>
+                                <div class="col"><h3 class="card-title"><a href="/EditAll/deleteCat/<%= cats.ID_Cat %>" class="btn btn-outline-danger"><i class="bi bi-file-earmark-x-fill"></i></a></h3></div>
+                            </div>
+                             
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">ชื่อแมว : <%= cats.Cat_Name %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">เพศ : <%= cats.Cat_Gender %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">สายพันธ์ุ : <%= cats.Cat_Species %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">อายุ : <%= cats.Cat_Age %></p>
+                             <a href="/EditAll/AddTreatment/<%= cats.ID_Cat %>" class="btn btn-success">เพิ่มเคสการรักษา</a>
+                             <a href="/EditAll/AddPayment/<%= cats.ID_Cat %>" class="btn btn-success">เพิ่มบิลค่ารักษา</a>
+                             <a href="/EditAll/EditCat/<%= cats.ID_Cat %>" class="btn btn-primary">แก้ไขข้อมูลแมว</a>
                         </div>
                     </div>
                 </div>
             <% }) %>
         </div>
         <div class="row mt-3">
-            <div class="col"><h1>รายการรักษา</h1></div>
+            <div class="col"><h1 class="fw-bold">รายการรักษา</h1></div>
         </div>
         <div class="row mt-3">
             <% AllTreatment.forEach((Treatments, index) => { %>
                 <div class="col-4">
-                    <div class="card">
+                    <div class="card bg-light bg-opacity-50">
                         <div class="card-body">
-                             <h3 class="card-title">#<%= index + 1 %> <%= Treatments.ID_Treatment %></h3>
-                             <p class="card-text">รหัสแมว : <%= Treatments.ID_Cat %></p>
-                             <p class="card-text">อาการป่วย : <%= Treatments.Cat_symptoms %></p>
-                             <p class="card-text">สถานะ : <%= Treatments.Cat_status %></p>
-                             <p class="card-text">วันที่รักษา : <%= Treatments.Treatment_Date %></p>
-                             <p class="card-text">ค่ารักษา : ฿ <%= Treatments.Payment %></p>
-                             <a href="/EditAll/EditTreatment/<%= Treatments.ID_Treatment %>" class="btn btn-info">แก้ไขข้อมูลรายการรักษา</a>
+                            <div class="row">
+                                <div class="col-10"><h3 class="card-title">#<%= index + 1 %> <%= Treatments.ID_Treatment %></h3></div>
+                                <div class="col"><h3 class="card-title"><a href="/EditAll/deleteTreatments/<%= Treatments.ID_Treatment %>" class="btn btn-outline-danger"><i class="bi bi-file-earmark-x-fill"></i></a></h3></div>
+                            </div>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">รหัสแมว : <%= Treatments.ID_Cat %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">อาการป่วย : <%= Treatments.Cat_symptoms %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">สถานะ : <%= Treatments.Cat_status %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">วันที่รักษา : <%= Treatments.Treatment_Date %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">ค่ารักษา : ฿ <%= Treatments.Payment %></p>
+                             <a href="/EditAll/EditTreatment/<%= Treatments.ID_Treatment %>" class="btn btn-primary">แก้ไขข้อมูลรายการรักษา</a>
                         </div>
                     </div>
                 </div>
             <% }) %>
         </div>
         <div class="row mt-3">
-            <div class="col"><h1>บิลค่ารักษา</h1></div>
+            <div class="col"><h1 class="fw-bold">บิลค่ารักษา</h1></div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 mb-3">
             <% AllPayment.forEach((payments, index) => { %>
                 <div class="col-4">
-                    <div class="card">
+                    <div class="card bg-light bg-opacity-50">
                         <div class="card-body">
-                             <h3 class="card-title">#<%= index + 1 %> <%= payments.ID_Payment %></h3>
-                             <p class="card-text">รหัสแมว : <%= payments.ID_Cat %></p>
-                             <p class="card-text">ยารักษา : <%= payments.Medicine_fake_away %></p>
-                             <p class="card-text">วันออกบิลค่ารักษา : <%= payments.Payment_Date %></p>
-                             <p class="card-text">ค่ารักษา : ฿ <%= payments.Payment %></p>
-                             <a href="/EditAll/EditPayment/<%= payments.ID_Payment %>" class="btn btn-info">แก้ไขข้อมูลบิลค่ารักษา</a>
+                            <div class="row">
+                                <div class="col-10"><h3 class="card-title">#<%= index + 1 %> <%= payments.ID_Payment %></h3></div>
+                                <div class="col"><h3 class="card-title"><a href="/EditAll/deletePayments/<%= payments.ID_Payment %>" class="btn btn-outline-danger"><i class="bi bi-file-earmark-x-fill"></i></a></h3></div>
+                            </div>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">รหัสแมว : <%= payments.ID_Cat %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">ยารักษา : <%= payments.Medicine_fake_away %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">วันออกบิลค่ารักษา : <%= payments.Payment_Date %></p>
+                             <p class="card-text form-control border-danger bg-danger text-light fw-bold">ค่ารักษา : ฿ <%= payments.Payment %></p>
+                             <a href="/EditAll/EditPayment/<%= payments.ID_Payment %>" class="btn btn-primary">แก้ไขข้อมูลบิลค่ารักษา</a>
                         </div>
                     </div>
                 </div>

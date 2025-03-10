@@ -39,6 +39,8 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const catId = req.params.id;
     await Cat.deleteOne({ ID_Cat: catId });
+    await Treatment.deleteOne({ ID_Cat: catId });
+    await Payment.deleteOne({ ID_Cat: catId });
     res.json({});
 });
 

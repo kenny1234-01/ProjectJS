@@ -36,6 +36,7 @@ router.get('/AddPayment/:id', async (req, res) => {
     res.render('formPayment', { cat });
 });
 
+//เจ้าของ
 // แก้ไขเจ้าของแมว
 router.get('/EditOwder/:id', async (req, res) => {
     const IdOwner = req.params.id;
@@ -49,6 +50,7 @@ router.post('/EditOwder/:id', async (req, res) => {
     res.redirect(`/EditAll/${IdOwner}`);
 });
 
+//แมว
 // แก้ไขแมว
 router.get('/EditCat/:id', async (req, res) => {
     const Idcat = req.params.id;
@@ -62,7 +64,14 @@ router.post('/EditCat/:id', async (req, res) => {
     await axios.put(`http://localhost:5000/cat/${Idcat}`, DataCat);
     res.redirect(`/EditAll/${IdOwner.ID_Pet_Owner}`);
 });
+//ลบแมว
+router.get('/deleteCat/:id', async (req, res) => {
+    const IdOwner = await Cat.findOne({ ID_Cat: req.params.id });
+    await axios.delete(`http://localhost:5000/cat/${req.params.id}`);
+    res.redirect(`/EditAll/${IdOwner.ID_Pet_Owner}`);
+});
 
+//รายการรักษา
 // แก้ไขรายการรักษา
 router.get('/EditTreatment/:id', async (req, res) => {
     const IdTreat = req.params.id;
@@ -78,8 +87,16 @@ router.post('/EditTreatment/:id', async (req, res) => {
     await axios.put(`http://localhost:5000/Treatment/${IdTreatment}`, DataTreatment);
     res.redirect(`/EditAll/${IdOwner}`);
 });
+// ลบรายการรักษา
+router.get('/deleteTreatments/:id', async (req, res) => {
+    const IdCat = await Treatment.findOne({ ID_Treatment: req.params.id });
+    const IdOwner = await Cat.findOne({ ID_Cat: IdCat.ID_Cat });
+    await axios.delete(`http://localhost:5000/Treatment/${req.params.id}`);
+    res.redirect(`/EditAll/${IdOwner.ID_Pet_Owner}`);
+});
 
-// แก้ไขรายการรักษา
+//บิล
+// แก้ไขบิล
 router.get('/EditPayment/:id', async (req, res) => {
     const IdPayment = req.params.id;
     const payment = await Payment.findOne({ ID_Payment: IdPayment });
@@ -93,6 +110,13 @@ router.post('/EditPayment/:id', async (req, res) => {
     const Datapayment = req.body;
     await axios.put(`http://localhost:5000/Payment/${Idpayment}`, Datapayment);
     res.redirect(`/EditAll/${IdOwner}`);
+});
+//ลบบิล
+router.get('/deletePayments/:id', async (req, res) => {
+    const IdCat = await Payment.findOne({ ID_Payment: req.params.id });
+    const IdOwner = await Cat.findOne({ ID_Cat: IdCat.ID_Cat });
+    await axios.delete(`http://localhost:5000/Payment/${req.params.id}`);
+    res.redirect(`/EditAll/${IdOwner.ID_Pet_Owner}`);
 });
 
 // ลบข้อมูลทั้งหมด
