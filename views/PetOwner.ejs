@@ -28,23 +28,16 @@
                     <th scope="col">ชื่อเจ้าของแมว</th>
                     <th scope="col">นามสกุลเจ้าของแมว</th>
                     <th scope="col">เบอร์โทร</th>
-                    <th scope="col">แก้ไข</th>
                   </tr>
                 </thead>
                 <tbody>
                     <% petOwner.forEach((petOwnerS, index) => { %>
                         <tr class="table-info">
                             <td><%= index + 1 %></td>
-                            <td><%= petOwnerS.ID_Pet_Owner %></td>
+                            <td><a class="link-offset-2 link-underline link-underline-opacity-0" href="/EditAll/<%= petOwnerS.ID_Pet_Owner %>"><%= petOwnerS.ID_Pet_Owner %></a></td>
                             <td><%= petOwnerS.NamePet_Owner %></td>
                             <td><%= petOwnerS.LastNamePet_Owner %></td>
                             <td><%= petOwnerS.PhoneNumber %></td>
-                            <td>
-                                <div class="col">
-                                    <a href="/EditAll/EditOwder/<%= petOwnerS.ID_Pet_Owner %>" class="btn btn-outline-primary">แก้ไข</a>
-                                    <a href="/EditAll/deleteAllCase/<%= petOwnerS.ID_Pet_Owner %>" class="btn btn-outline-danger">ลบ</a>
-                                </div>
-                            </td>
                         </tr>
                     <% }) %>
                 </tbody>
@@ -55,7 +48,6 @@
                     <td scope="col"></td>
                     <td scope="col"></td>
                     <td scope="col"></td>
-                    <th scope="col"></th>
                   </tr>
                 </tbody>
             </table>

@@ -30,7 +30,6 @@
                     <th scope="col">สถานะ</th>
                     <th scope="col">วันที่รักษา</th>
                     <th scope="col">ค่ารักษา</th>
-                    <th scope="col">แก้ไข</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -43,12 +42,6 @@
                             <td><%= treatment.Cat_status %></td>
                             <td><%= treatment.Treatment_Date %></td>
                             <td>฿ <%= treatment.Payment %></td>
-                            <td>
-                                <div class="col">
-                                    <a href="/EditAll/EditTreatment/<%= treatment.ID_Treatment %>" class="btn btn-outline-primary">แก้ไข</a>
-                                    <a href="/EditAll/deleteTreatments/<%= treatment.ID_Treatment %>" class="btn btn-outline-danger">ลบ</a>
-                                </div>
-                            </td>
                         </tr>
                     <% }) %>
                 </tbody>

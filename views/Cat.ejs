@@ -30,7 +30,6 @@
                     <th scope="col">อายุ</th>
                     <th scope="col">ชื่อ</th>
                     <th scope="col">รหัสเจ้าของแมว</th>
-                    <th scope="col">แก้ไข</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,19 +41,12 @@
                             <td><%= cat.Cat_Species %></td>
                             <td><%= cat.Cat_Age %></td>
                             <td><%= cat.Cat_Name %></td>
-                            <td><%= cat.ID_Pet_Owner %></td>
-                            <td>
-                                <div class="col">
-                                    <a href="/EditAll/EditCat/<%= cat.ID_Cat %>" class="btn btn-outline-primary">แก้ไข</a>
-                                    <a href="/EditAll/deleteCat/<%= cat.ID_Cat %>" class="btn btn-outline-danger">ลบ</a>
-                                </div>
-                            </td>
+                            <td><a class="link-offset-2 link-underline link-underline-opacity-0" href="/EditAll/<%= cat.ID_Pet_Owner %>"><%= cat.ID_Pet_Owner %></a></td>
                         </tr>
                     <% }) %>
                 </tbody>
                 <tbody>
                   <tr>
-                    <td scope="col"></td>
                     <td scope="col"></td>
                     <td scope="col"></td>
                     <td scope="col"></td>

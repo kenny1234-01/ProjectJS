@@ -30,7 +30,6 @@
                     <th scope="col">ชื่อแมว</th>
                     <th scope="col">อาการป่วย</th>
                     <th scope="col">ค่ารักษา</th>
-                    <th scope="col">แก้ไข</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,7 +40,7 @@
                           <tr class="table-info">
                               <% if (catIndex === 0) { %> <!-- แสดงข้อมูลเจ้าของแมวแค่แถวแรก -->
                                   <td rowspan="<%= ownerRowspan %>"><%= rowIndex++ %></td>
-                                  <td rowspan="<%= ownerRowspan %>"><%= owner.ID_Pet_Owner %></td>
+                                  <td rowspan="<%= ownerRowspan %>"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/EditAll/<%= owner.ID_Pet_Owner %>"><%= owner.ID_Pet_Owner %></a></td>
                                   <td rowspan="<%= ownerRowspan %>">
                                       <%= owner.NamePet_Owner %> <%= owner.LastNamePet_Owner %>
                                   </td>
@@ -62,14 +61,6 @@
                                       ไม่มีข้อมูล
                                   <% } %>
                               </td>
-                              <% if (catIndex === 0) { %> <!-- แสดงปุ่มแค่แถวแรกของแมวแต่ละตัว -->
-                                <td rowspan="<%= ownerRowspan %>">
-                                    <div class="col">
-                                        <a href="/EditAll/<%= owner.ID_Pet_Owner %>" class="btn btn-outline-primary">แก้ไข</a>
-                                        <a href="/EditAll/deleteAllCase/<%= owner.ID_Pet_Owner %>" class="btn btn-outline-danger">ลบ</a>
-                                    </div>
-                                </td>
-                              <% } %>
                           </tr>
                       <% }) %>
                   <% }) %>
@@ -83,7 +74,6 @@
                     <td scope="col"></td>
                     <th scope="col">รวม</th>
                     <th scope="col">฿ <%= payment %></th>
-                    <td scope="col"></td>
                   </tr>
                 </tbody>
             </table>
